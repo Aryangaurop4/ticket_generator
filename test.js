@@ -1,0 +1,72 @@
+const getValues= ()=>{
+    let months=['Jan','Feb','Mar','Apr','May','June','July','Aug','Sept','Oct','Nov','Dec']
+let tnumber=document.getElementById("tnumber").value;
+let tname=document.getElementById("tname").value;
+let djourney=document.getElementById("djourney").value;
+let m=`${djourney.substring(5,7)}`
+let n=`-${months[Number.parseInt(m)-1]}`;
+m=`-${m}`
+djourney=djourney.replace(m,n)
+let destination=document.getElementById("destination").value;
+let bdate=document.getElementById("bdate").value;
+let m2=`${bdate.substring(5,7)}`
+let n2=`-${months[Number.parseInt(m2)-1]}`;
+m2=`-${m2}`
+bdate=bdate.replace(m2,n2)
+let source=document.getElementById("source").value;
+let dtime=document.getElementById("dtime").value;
+let atime=document.getElementById("atime").value;
+let bsc=document.getElementById("bsc").value;
+let asc=document.getElementById("asc").value;
+let adate=document.getElementById("adate").value;
+let m1=`${adate.substring(5,7)}`
+let n1=`-${months[Number.parseInt(m1)-1]}`;
+m1=`-${m1}`
+adate=adate.replace(m1,n1)
+let title=document.getElementById("title");
+title.innerHTML=`<b>Gmail - Booking Confirmation on IRCTC, Train: ${tnumber}, ${djourney}, 2A, ${bsc} - ${asc}</b>`;
+let pnr=document.getElementById('pnr');
+pnr.innerHTML=`${Math.floor(Math.random()*2999999999)+7000000000}`;
+let no_name=document.getElementById('no_name');
+no_name.innerHTML=`${tnumber} / ${tname}`
+let tid=document.getElementById('tid');
+tid.innerHTML=`${Math.floor(Math.random()*9999999999)+100000000000000}`;
+let from=document.getElementById('from');
+from.innerHTML=`${source}`;
+let to=document.getElementById('to');
+to.innerHTML=`${destination}`
+let datejourney=document.getElementById('datejourney');
+datejourney.innerHTML=`${djourney}`;
+let boarding=document.getElementById('boarding');
+boarding.innerHTML=`${bsc}`
+let barddate=document.getElementById('barddate');
+barddate.innerHTML=`${djourney}`
+let bookdate=document.getElementById("bookdate");
+bookdate.innerHTML=`${bdate} ${Math.floor(Math.random()*19)+5}:${Math.floor(Math.random()*60)+0}:${Math.floor(Math.random()*60)+0} HRS`
+let scharr=document.getElementById('scharr');
+scharr.innerHTML=`${atime} ${adate}`;
+let resupto=document.getElementById('resupto');
+resupto.innerHTML=`${destination}`
+let sdt=document.getElementById('sdt');
+sdt.innerHTML=`${dtime} ${djourney}`
+let farev=document.getElementById('farev');
+farev.innerHTML=`₹ ${fare.value}`
+let tfare=document.getElementById('tfare');
+tfare.innerHTML=`₹ ${17.70+Number.parseFloat(fare.value)}`
+let seatno=document.getElementById("seatno");
+seatno.innerHTML=`${Math.floor(Math.random()*40)+20}`
+let side=document.getElementById("side");
+side.innerHTML=`<font size="-1">${bdate} at ${Math.floor(Math.random()*19)+5}:${Math.floor(Math.random()*60)+0} HRS</font>`
+}
+
+let btn=document.getElementById("submit");
+btn.addEventListener("click",()=>{
+    let form=document.getElementById("form");
+    getValues();
+    form.style.display="none";
+    let bodycontainer=document.getElementById("bodycontainer");
+    bodycontainer.style.display="block";
+    let maincontent=document.getElementById("maincontent");
+    maincontent.style.display="block";
+    document.body.onload = function () { document.body.offsetHeight; window.print() };
+})
